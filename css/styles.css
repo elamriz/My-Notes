@@ -1,0 +1,97 @@
+* {
+    font-family :verdana,sans-serif;
+    font-size   :14pt;
+}
+
+body {
+    width       :700px;
+    margin      :20px auto;
+    background  :#f8f8f8;
+    border      :1px solid #888;
+}
+
+html {
+    background  :#fff
+}
+
+.main {
+    padding     :20px;
+}
+
+form * {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.menu {
+    text-align  :center;
+    padding     :20px;
+}
+
+.title {
+    text-align  :center;
+    background  :lightsteelblue;
+    color       :yellow;
+    font-family :helvetica;
+    font-size   :20pt;
+    font-weight :bold;
+    padding     :8px;
+}
+
+.menu a {
+    display           :inline;
+    padding           :4px 6px;
+    border            :1px solid #777;
+    background        :#ddd;
+    color             :#d04;
+    margin-right      :8px;
+    border-radius     :3px;
+    box-shadow        :2px 2px 2px #888;
+    text-decoration   :none;
+}
+
+.menu a:hover {
+    color   :green;
+}
+
+.message_list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.message_list * {
+    font-size: 10pt;
+}
+
+.message_list th, .message_list td {
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+textarea {
+    width: 100%;
+}
+
+.errors {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+form.link {
+    display: inline;
+}
+
+form.link input[type="submit"] {
+    background:none!important;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     color: blue;
+     text-decoration: underline;
+     
+     cursor: pointer;
+}
