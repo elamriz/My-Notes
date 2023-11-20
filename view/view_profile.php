@@ -24,7 +24,7 @@
             <?php endif; ?>
             <br>
             <br>
-            <a href="messages.php?param1=<?= $member->pseudo ?>">View <?= $member->pseudo ?>'s messages</a>
+            <a href="message/index/<?= $member->pseudo ?>">View <?= $member->pseudo ?>'s messages</a>
         </div>
     </body>
 </html>

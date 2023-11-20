@@ -32,4 +32,31 @@ class ControllerMain extends Controller {
         }
         (new View("login"))->show(["pseudo" => $pseudo, "password" => $password, "errors" => $errors]);
     }
+
+    public function signup() : void {
+        $pseudo = '';
+        $password = '';
+        $password_confirm = '';
+        $errors = [];
+
+        if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['password_confirm'])){
+            $pseudo = trim($_POST['pseudo']);
+            $password = $_POST['password'];
+            $password_confirm = $_POST['password_confirm'];
+            
+            $member = new Member($pseudo, Tools::my_hash($password));
+            $errors = Member::validate_unicity($pseudo);
+            $errors = array_merge($errors, $member->validate());
+            $errors = array_merge($errors, Member::validate_passwords($password, $password_confirm));
+
+            if (count($errors) == 0) { 
+                $member->persist(); //sauve l'utilisateur
+                $this->log_user($member);
+            }
+        }
+        (new View("signup"))->show(["pseudo" => $pseudo,
+                                   "password" => $password,
+                                   "password_confirm" => $password_confirm,
+                                   "errors" => $errors]);
+    }
 }

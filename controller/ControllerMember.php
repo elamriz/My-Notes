@@ -65,4 +65,10 @@ class ControllerMember extends Controller {
         (new View("profile"))->show(["member" => $member]);
     }
 
+    public function members() : void {
+        $this->get_user_or_redirect();
+        $members = Member::get_members();
+        (new View("members"))->show(["members" => $members]);
+    }
+
 }

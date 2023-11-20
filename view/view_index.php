@@ -11,7 +11,7 @@
         <div class="title">Welcome to MSN (My Social Network)!</div>
         <div class="menu">
             <a href="main/login">Log In</a>
-            <a href="signup.php">Sign Up</a>
+            <a href="main/signup">Sign Up</a>
         </div>
         <div class="main">
             Please log in or sign up!
