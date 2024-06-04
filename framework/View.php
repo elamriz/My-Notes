@@ -13,7 +13,7 @@ class View
 
     //affiche la vue en lui passant les données reçues
     //sous forme de variables
-    public function show(array $data = []) : void {
+    public function show(array $data = array()) : void {
         if (file_exists($this->file)) {
             extract($data);
             $web_root = Configuration::get("web_root");

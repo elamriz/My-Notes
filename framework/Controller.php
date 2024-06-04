@@ -18,7 +18,7 @@ abstract class Controller {
 
     //déconnecte l'utilisateur et redirige vers l'accueil
     public function logout() : void {
-        $_SESSION = [];
+        $_SESSION = array();
         session_destroy();
         $this->redirect();
     }

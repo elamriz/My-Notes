@@ -41,7 +41,7 @@ class ControllerSetup extends Controller {
             echo "<a href='{$webroot}'>Retour à l'index</a>";
         }
         catch (Exception $exc) {
-            throw new Exception("Erreur lors de l'accès à la base de données : ".$exc->getMessage());
+            Tools::abort("Erreur lors de l'accès à la base de données : ".$exc->getMessage());
         }
         
     }

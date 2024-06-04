@@ -1,42 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title><?= $member->pseudo ?>'s Profile</title>
-        <base href="<?= $web_root ?>"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <div class="title">Update Your Profile</div>
-        <?php include('menu.html'); ?>
-        <div class="main">
-            <form method='post' action='member/edit_profile' enctype='multipart/form-data'>
-                <p>Enter or edit your details and/or upload an image.</p>
-                <textarea name='profile' cols='50' rows='3'><?= $member->profile ?></textarea><br><br>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier le Profil</title>
+    <base href="<?= $web_root ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?php echo $web_root; ?>Main/Settings">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+    </div>
+</nav>
+    <div class="d-flex justify-content-center align-items-center vh-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card my-5">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Modifier le Profil</h2>
 
-                Image: <input type='file' name='image' accept="image/x-png, image/gif, image/jpeg"><br><br>
-                <?php if ($member->picture_path): ?>
-                    <img src='upload/<?= $member->picture_path ?>' width="100" alt="Profile image"><br><br>
-                <?php endif; ?>
-                <input type='submit' value='Save Profile'>
-            </form>
+                            <!-- Messages d'erreur -->
+                            <?php if (!empty($errors)): ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php foreach ($errors as $error): ?>
+                                        <p><?php echo htmlspecialchars($error); ?></p>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
 
-            <?php if (count($errors) != 0): ?>
-                <div class='errors'>
-                    <p>Please correct the following error(s) :</p>
-                    <ul>
-                        <?php foreach ($errors as $error): ?>
-                            <li><?= $error ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+                            <form action="main/edit_profile" method="post">
+                                <div class="mb-3">
+                                    <label for="fullName" class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Nom complet" value="<?php echo isset($user) ? htmlspecialchars($user->getFullName()) : ''; ?>" >
+                                        
+                                    </label>
+                                </div>
+
+                               
+
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            <?php elseif (strlen($success) != 0): ?>
-                <p><span class='success'><?= $success ?></span></p>
-            <?php endif; ?>
-
-
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
-

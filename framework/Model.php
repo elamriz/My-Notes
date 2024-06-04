@@ -19,7 +19,7 @@ abstract class Model {
 
             self::$pdo = new PDO($dsn, $dbuser, $dbpassword);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			self::$pdo->query("SET sql_mode=(SELECT CONCAT(@@sql_mode,',ONLY_FULL_GROUP_BY'));");
+            self::$pdo->query("SET sql_mode=(SELECT CONCAT(@@sql_mode,',ONLY_FULL_GROUP_BY'));");
         }
         return self::$pdo;
     }
@@ -35,5 +35,7 @@ abstract class Model {
     protected static function lastInsertId() : int {
         return self::connect()->lastInsertId();
     }
+
+
 
 }
